@@ -17,6 +17,8 @@
 		A8A105B02722F858005E4139 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A105AF2722F858005E4139 /* NetworkManager.swift */; };
 		A8A105B227230A45005E4139 /* SuperHeroesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A105B127230A44005E4139 /* SuperHeroesViewController.swift */; };
 		A8A105B427230AEC005E4139 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A105B327230AEC005E4139 /* CollectionViewCell.swift */; };
+		C6AD17522C7A780000E231D4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD17512C7A780000E231D4 /* DetailViewController.swift */; };
+		C6AD17542C7A892000E231D4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD17532C7A892000E231D4 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		A8A105AF2722F858005E4139 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A8A105B127230A44005E4139 /* SuperHeroesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroesViewController.swift; sourceTree = "<group>"; };
 		A8A105B327230AEC005E4139 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		C6AD17512C7A780000E231D4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C6AD17532C7A892000E231D4 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A105B127230A44005E4139 /* SuperHeroesViewController.swift */,
+				C6AD17512C7A780000E231D4 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -103,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A105AF2722F858005E4139 /* NetworkManager.swift */,
+				C6AD17532C7A892000E231D4 /* DataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -212,11 +218,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8A1059A2722F62C005E4139 /* AppDelegate.swift in Sources */,
+				C6AD17542C7A892000E231D4 /* DataManager.swift in Sources */,
 				A8A105B02722F858005E4139 /* NetworkManager.swift in Sources */,
 				A8A105B427230AEC005E4139 /* CollectionViewCell.swift in Sources */,
 				A8A1059C2722F62C005E4139 /* SceneDelegate.swift in Sources */,
 				A8A105B227230A45005E4139 /* SuperHeroesViewController.swift in Sources */,
 				A8A105AE2722F701005E4139 /* Superhero.swift in Sources */,
+				C6AD17522C7A780000E231D4 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

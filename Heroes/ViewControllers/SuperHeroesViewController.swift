@@ -24,10 +24,22 @@ final class SuperHeroesViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "superhero", for: indexPath) as! CollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "superhero", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell()}
         let superhero = superheroes[indexPath.row]
         cell.configure(with: superhero)
         return cell
+    }
+    
+    // MARK: UICollectionViewDelegate
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let superhero = superheroes[indexPath.row]
+        performSegue(withIdentifier: "showDetail", sender: superhero)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? DetailViewController else { return }
+        detailVC.superhero = sender as? Superhero
     }
     
     @IBAction func clearCache(_ sender: UIBarButtonItem) {
@@ -49,4 +61,5 @@ final class SuperHeroesViewController: UICollectionViewController {
             }
         }
     }
+    
 }

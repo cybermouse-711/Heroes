@@ -18,7 +18,7 @@ final class CollectionViewCell: UICollectionViewCell {
     
     func configure(with superhero: Superhero) {
         mainLabel.text = superhero.name
-        guard let imageURL = URL(string: superhero.images.lg) else { return }
+        guard let imageURL = URL(string: superhero.images.md) else { return }
         imageView.kf.indicatorType = .activity
         let processor = DownsamplingImageProcessor(size: imageView.bounds.size)
         imageView.kf.setImage(
