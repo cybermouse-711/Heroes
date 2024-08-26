@@ -14,27 +14,24 @@ class DetailViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var firstLabel: UILabel!
     @IBOutlet var secondLabel: UILabel!
-    @IBOutlet var favoriteButton: UIButton!
     
-    var superhero: Superhero!
-    
-    private var isFavorite = false
+    var superhero: Superhero?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setStatusForFavoriteButton()
+        fetch()
         setupUI()
     }
     
-    @IBAction func actionButton(_ sender: UIButton) {
-        isFavorite.toggle()
-    }
     
     private func setupUI() {
-        titleLabel.text = superhero.name
-        firstLabel.text = superhero.biography.fullName
-        secondLabel.text = superhero.work.base
-        
+        titleLabel.text = superhero?.name
+        firstLabel.text = superhero?.biography.fullName
+        secondLabel.text = superhero?.appearance.race
+    }
+    
+    private func fetch() {
+        guard let superhero else { return }
         guard let imageURL = URL(string: superhero.images.lg) else { return }
         detailImage.kf.indicatorType = .activity
         let processor = DownsamplingImageProcessor(size: detailImage.bounds.size)
@@ -54,10 +51,5 @@ class DetailViewController: UIViewController {
                 print("Job failed: \(error.localizedDescription)")
             }
         }
-        setStatusForFavoriteButton()
-    }
-    
-    private func setStatusForFavoriteButton() {
-        favoriteButton.tintColor = isFavorite ? .red : .gray
     }
 }

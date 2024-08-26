@@ -16,7 +16,8 @@ final class CollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(with superhero: Superhero) {
+    func configure(with superhero: Superhero?) {
+        guard let superhero else { return }
         mainLabel.text = superhero.name
         guard let imageURL = URL(string: superhero.images.md) else { return }
         imageView.kf.indicatorType = .activity

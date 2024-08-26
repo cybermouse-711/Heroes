@@ -17,6 +17,11 @@ final class SuperHeroesViewController: UICollectionViewController {
         super.viewDidLoad()
         fetchSuperheroes()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? DetailViewController else { return }
+        detailVC.superhero = sender as? Superhero
+    }
 
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -33,13 +38,8 @@ final class SuperHeroesViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let superhero = superheroes[indexPath.row]
+        let superhero = superheroes[indexPath.item]
         performSegue(withIdentifier: "showDetail", sender: superhero)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailVC = segue.destination as? DetailViewController else { return }
-        detailVC.superhero = sender as? Superhero
     }
     
     @IBAction func clearCache(_ sender: UIBarButtonItem) {

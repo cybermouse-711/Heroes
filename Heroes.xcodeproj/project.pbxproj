@@ -18,7 +18,7 @@
 		A8A105B227230A45005E4139 /* SuperHeroesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A105B127230A44005E4139 /* SuperHeroesViewController.swift */; };
 		A8A105B427230AEC005E4139 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A105B327230AEC005E4139 /* CollectionViewCell.swift */; };
 		C6AD17522C7A780000E231D4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD17512C7A780000E231D4 /* DetailViewController.swift */; };
-		C6AD17542C7A892000E231D4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD17532C7A892000E231D4 /* DataManager.swift */; };
+		C6AD17562C7B531700E231D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD17552C7B531700E231D4 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		A8A105B127230A44005E4139 /* SuperHeroesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroesViewController.swift; sourceTree = "<group>"; };
 		A8A105B327230AEC005E4139 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C6AD17512C7A780000E231D4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		C6AD17532C7A892000E231D4 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		C6AD17552C7B531700E231D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +73,7 @@
 				A8A105B727240FFA005E4139 /* Views */,
 				A8A105B927241014005E4139 /* Models */,
 				A8A105BA2724101C005E4139 /* Services */,
+				C6AD17572C7B531E00E231D4 /* New Group */,
 				A8A105BB27241028005E4139 /* StoryBoards */,
 				A8A105BD2724104B005E4139 /* Resources */,
 			);
@@ -108,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				A8A105AF2722F858005E4139 /* NetworkManager.swift */,
-				C6AD17532C7A892000E231D4 /* DataManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -138,6 +138,14 @@
 				A8A105A22722F630005E4139 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C6AD17572C7B531E00E231D4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				C6AD17552C7B531700E231D4 /* Constants.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,13 +226,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8A1059A2722F62C005E4139 /* AppDelegate.swift in Sources */,
-				C6AD17542C7A892000E231D4 /* DataManager.swift in Sources */,
 				A8A105B02722F858005E4139 /* NetworkManager.swift in Sources */,
 				A8A105B427230AEC005E4139 /* CollectionViewCell.swift in Sources */,
 				A8A1059C2722F62C005E4139 /* SceneDelegate.swift in Sources */,
 				A8A105B227230A45005E4139 /* SuperHeroesViewController.swift in Sources */,
 				A8A105AE2722F701005E4139 /* Superhero.swift in Sources */,
 				C6AD17522C7A780000E231D4 /* DetailViewController.swift in Sources */,
+				C6AD17562C7B531700E231D4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
