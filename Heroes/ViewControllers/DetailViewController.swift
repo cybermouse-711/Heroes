@@ -10,24 +10,47 @@ import Kingfisher
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet var detailImage: UIImageView!
+    @IBOutlet var detailImage: UIImageView! {
+        didSet {
+            detailImage.layer.cornerRadius = 30
+        }
+    }
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var firstLabel: UILabel!
     @IBOutlet var secondLabel: UILabel!
+    @IBOutlet var favoriteButton: UIButton!
     
-    var superhero: Superhero?
+    var superhero: Superhero!
+    
+    private var isFavorite = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetch()
+        loadFavoriteStatusButton()
         setupUI()
     }
     
+    @IBAction func toggleFavorite() {
+        isFavorite.toggle()
+        setStatusForFavoriteButton()
+        DataManager.shared.setFavoriteStatus(for: superhero.name, with: isFavorite)
+    }
+    
+    private func setStatusForFavoriteButton() {
+        favoriteButton.tintColor = isFavorite ? .red : .gray
+    }
+    
+    private func loadFavoriteStatusButton() {
+        isFavorite = DataManager.shared.getFavoriteStatus(for: superhero.name)
+    }
     
     private func setupUI() {
-        titleLabel.text = superhero?.name
-        firstLabel.text = superhero?.biography.fullName
-        secondLabel.text = superhero?.appearance.race
+        titleLabel.text = superhero.name
+        firstLabel.text = "FullName: \(superhero.biography.fullName)"
+        secondLabel.text = "Race: \(superhero.appearance.race ?? "not race")"
+        
+        setStatusForFavoriteButton()
     }
     
     private func fetch() {
