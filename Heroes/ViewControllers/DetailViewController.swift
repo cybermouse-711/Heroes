@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
     @IBAction func toggleFavorite() {
         isFavorite.toggle()
         setStatusForFavoriteButton()
-        DataManager.shared.setFavoriteStatus(for: superhero.name, with: isFavorite)
+        DataManager.shared.setFavoriteStatus(for: superhero.id, with: isFavorite)
     }
     
     private func setStatusForFavoriteButton() {
@@ -42,7 +42,7 @@ class DetailViewController: UIViewController {
     }
     
     private func loadFavoriteStatusButton() {
-        isFavorite = DataManager.shared.getFavoriteStatus(for: superhero.name)
+        isFavorite = DataManager.shared.getFavoriteStatus(for: superhero.id)
     }
     
     private func setupUI() {
