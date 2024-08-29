@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class DetailViewController: UIViewController {
 
@@ -20,59 +19,33 @@ class DetailViewController: UIViewController {
     @IBOutlet var secondLabel: UILabel!
     @IBOutlet var favoriteButton: UIButton!
     
-    var superhero: Superhero!
+    var viewModel: DetailViewModelProtocol!
     
-    private var isFavorite = false
+    var superhero: Superhero!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetch()
-        loadFavoriteStatusButton()
         setupUI()
     }
     
     @IBAction func toggleFavorite() {
-        isFavorite.toggle()
-        setStatusForFavoriteButton()
-        DataManager.shared.setFavoriteStatus(for: superhero.id, with: isFavorite)
-    }
-    
-    private func setStatusForFavoriteButton() {
-        favoriteButton.tintColor = isFavorite ? .red : .gray
-    }
-    
-    private func loadFavoriteStatusButton() {
-        isFavorite = DataManager.shared.getFavoriteStatus(for: superhero.id)
+        viewModel.favoriteButtonPressed()
     }
     
     private func setupUI() {
-        titleLabel.text = superhero.name
-        firstLabel.text = "FullName: \(superhero.biography.fullName)"
-        secondLabel.text = "Race: \(superhero.appearance.race ?? "not race")"
+        setStatusForFavoriteButton(viewModel.isFavorite)
         
-        setStatusForFavoriteButton()
+        viewModel.viewModelDidChange = { [unowned self]  viewModel in
+            setStatusForFavoriteButton(viewModel.isFavorite)
+        }
+        
+        titleLabel.text = viewModel.title
+        firstLabel.text = "FullName: \(viewModel.firstText)"
+        secondLabel.text = "Race: \(viewModel.secondText)"
+        detailImage.image = UIImage(data: viewModel.imageData ?? Data())
     }
     
-    private func fetch() {
-        guard let superhero else { return }
-        guard let imageURL = URL(string: superhero.images.lg) else { return }
-        detailImage.kf.indicatorType = .activity
-        let processor = DownsamplingImageProcessor(size: detailImage.bounds.size)
-        detailImage.kf.setImage(
-            with: imageURL,
-            options: [
-                .processor(processor),
-                .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
-                .cacheOriginalImage
-            ]
-        ) { result in
-            switch result {
-            case .success(let value):
-                print("Task done for: \(value.source.url?.lastPathComponent ?? "")")
-            case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
-            }
-        }
+    private func setStatusForFavoriteButton(_ status: Bool) {
+        favoriteButton.tintColor = status ? .red : .gray
     }
 }

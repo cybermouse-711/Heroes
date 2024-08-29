@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 final class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mainLabel: UILabel!
@@ -16,27 +15,20 @@ final class CollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(with superhero: Superhero?) {
-        guard let superhero else { return }
-        mainLabel.text = superhero.name
-        guard let imageURL = URL(string: superhero.images.md) else { return }
-        imageView.kf.indicatorType = .activity
-        let processor = DownsamplingImageProcessor(size: imageView.bounds.size)
-        imageView.kf.setImage(
-            with: imageURL,
-            options: [
-                .processor(processor),
-                .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
-                .cacheOriginalImage
-            ]
-        ) { result in
-            switch result {
-            case .success(let value):
-                print("Task done for: \(value.source.url?.lastPathComponent ?? "")")
-            case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
-            }
+    var viewModel: CollectionViewModelProtocol! {
+        didSet {
+            mainLabel.text = viewModel.text
+            imageView.image = UIImage(data: viewModel.imageData ?? Data())
         }
     }
+    
+//    override class func awakeFromNib() {
+//        viewModel = CollectionViewModel()
+//        setupUI()
+//    }
+//    
+//    func setupUI() {
+//        mainLabel.text = viewModel.text
+//        imageView.image = UIImage(data: viewModel.imageData ?? Data())
+//    }
 }
