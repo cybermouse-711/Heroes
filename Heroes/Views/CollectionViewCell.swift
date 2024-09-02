@@ -1,14 +1,18 @@
 //
-//  CollectionViewCell.swift
+//  CollectionCell.swift
 //  Heroes
 //
 //  Created by Alexey Efimov on 22.10.2021.
 //
 
 import UIKit
-import Kingfisher
 
-final class CollectionViewCell: UICollectionViewCell {
+protocol CellModelRepresentable {
+    var viewModel: CollectionCellViewModelProtocol? { get }
+}
+
+final class CollectionCell: UICollectionViewCell, CellModelRepresentable {
+
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView! {
         didSet {
@@ -16,27 +20,17 @@ final class CollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(with superhero: Superhero?) {
-        guard let superhero else { return }
-        mainLabel.text = superhero.name
-        guard let imageURL = URL(string: superhero.images.md) else { return }
-        imageView.kf.indicatorType = .activity
-        let processor = DownsamplingImageProcessor(size: imageView.bounds.size)
-        imageView.kf.setImage(
-            with: imageURL,
-            options: [
-                .processor(processor),
-                .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
-                .cacheOriginalImage
-            ]
-        ) { result in
-            switch result {
-            case .success(let value):
-                print("Task done for: \(value.source.url?.lastPathComponent ?? "")")
-            case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
-            }
+    var viewModel: CollectionCellViewModelProtocol? {
+        didSet {
+            updateView()
+        }
+    }
+    
+    private func updateView() {
+        guard let viewModel = viewModel as? CollectionCellViewModel else { return }
+        mainLabel.text = viewModel.cellTitle
+        if let data = viewModel.cellImageData {
+            imageView.image = UIImage(data: data)
         }
     }
 }

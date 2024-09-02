@@ -6,7 +6,20 @@
 //
 
 import UIKit
-import Kingfisher
+
+protocol DetailViewControllerInputProtocol: AnyObject {
+    func displayTitle(with title: String)
+    func displayFirstText(with title: String)
+    func displaySecondText(with title: String)
+    func displayImageData(with data: Data)
+    func displayImageForFavoriteStatus(with status: Bool)
+}
+
+protocol DetailViewControllerOutputProtocol {
+    init(view: DetailViewControllerInputProtocol)
+    func showDetail()
+    func favoriteButtonPressed()
+}
 
 class DetailViewController: UIViewController {
 
@@ -20,59 +33,37 @@ class DetailViewController: UIViewController {
     @IBOutlet var secondLabel: UILabel!
     @IBOutlet var favoriteButton: UIButton!
     
-    var superhero: Superhero!
-    
-    private var isFavorite = false
+    var presenter: DetailViewControllerOutputProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetch()
-        loadFavoriteStatusButton()
-        setupUI()
+        presenter.showDetail()
     }
     
     @IBAction func toggleFavorite() {
-        isFavorite.toggle()
-        setStatusForFavoriteButton()
-        DataManager.shared.setFavoriteStatus(for: superhero.id, with: isFavorite)
+        presenter.favoriteButtonPressed()
+    }
+}
+
+//MARK: - DetailViewControllerInputProtocol
+extension DetailViewController: DetailViewControllerInputProtocol {
+    func displayTitle(with title: String) {
+        titleLabel.text = title
     }
     
-    private func setStatusForFavoriteButton() {
-        favoriteButton.tintColor = isFavorite ? .red : .gray
+    func displayFirstText(with title: String) {
+        firstLabel.text = title
     }
     
-    private func loadFavoriteStatusButton() {
-        isFavorite = DataManager.shared.getFavoriteStatus(for: superhero.id)
+    func displaySecondText(with title: String) {
+        secondLabel.text = title
     }
     
-    private func setupUI() {
-        titleLabel.text = superhero.name
-        firstLabel.text = "FullName: \(superhero.biography.fullName)"
-        secondLabel.text = "Race: \(superhero.appearance.race ?? "not race")"
-        
-        setStatusForFavoriteButton()
+    func displayImageData(with data: Data) {
+        detailImage.image = UIImage(data: data)
     }
     
-    private func fetch() {
-        guard let superhero else { return }
-        guard let imageURL = URL(string: superhero.images.lg) else { return }
-        detailImage.kf.indicatorType = .activity
-        let processor = DownsamplingImageProcessor(size: detailImage.bounds.size)
-        detailImage.kf.setImage(
-            with: imageURL,
-            options: [
-                .processor(processor),
-                .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
-                .cacheOriginalImage
-            ]
-        ) { result in
-            switch result {
-            case .success(let value):
-                print("Task done for: \(value.source.url?.lastPathComponent ?? "")")
-            case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
-            }
-        }
+    func displayImageForFavoriteStatus(with status: Bool) {
+        favoriteButton.tintColor = status ? .red : .gray
     }
 }
