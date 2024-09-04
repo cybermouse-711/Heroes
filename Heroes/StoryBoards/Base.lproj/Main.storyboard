@@ -63,15 +63,9 @@
                             <outlet property="delegate" destination="4dO-zm-7nh" id="rtv-Cq-yaR"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="FIND YOUR HERO" id="qRh-8f-CDi">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="9VO-fC-hKN">
-                            <connections>
-                                <action selector="clearCache:" destination="4dO-zm-7nh" id="1Aq-vS-UVd"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="FIND YOUR HERO" id="qRh-8f-CDi"/>
                     <connections>
-                        <segue destination="AWw-15-JYC" kind="show" identifier="showDetail" id="Y2R-dl-PNl"/>
+                        <segue destination="AWw-15-JYC" kind="show" identifier="Detail" id="Y2R-dl-PNl"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Hw-dd-LDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
