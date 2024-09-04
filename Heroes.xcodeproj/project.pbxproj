@@ -29,8 +29,8 @@
 		C63BD0E52C875741003D678D /* SuperHeroesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63BD0E42C875741003D678D /* SuperHeroesRouter.swift */; };
 		C63BD0E92C876738003D678D /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63BD0E82C876738003D678D /* DetailRouter.swift */; };
 		C6A220932C7E0D800029E8C0 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A220922C7E0D800029E8C0 /* DateManager.swift */; };
-		C6AD17522C7A780000E231D4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD17512C7A780000E231D4 /* DetailViewController.swift */; };
 		C6AD17562C7B531700E231D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AD17552C7B531700E231D4 /* Constants.swift */; };
+		C6B3A78F2C88BA830070E128 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3A78E2C88BA830070E128 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,8 +57,8 @@
 		C63BD0E42C875741003D678D /* SuperHeroesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroesRouter.swift; sourceTree = "<group>"; };
 		C63BD0E82C876738003D678D /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
 		C6A220922C7E0D800029E8C0 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
-		C6AD17512C7A780000E231D4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../ViewControllers/DetailViewController.swift; sourceTree = "<group>"; };
 		C6AD17552C7B531700E231D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
+		C6B3A78E2C88BA830070E128 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A105BC27241041005E4139 /* App */,
-				C63BD0D32C87563E003D678D /* New Group2 */,
+				C63BD0D32C87563E003D678D /* DetailScene */,
 				A8A105B827241003005E4139 /* SuperheroScene */,
 				A8A105B927241014005E4139 /* Models */,
 				A8A105BA2724101C005E4139 /* Services */,
@@ -170,18 +170,18 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		C63BD0D32C87563E003D678D /* New Group2 */ = {
+		C63BD0D32C87563E003D678D /* DetailScene */ = {
 			isa = PBXGroup;
 			children = (
 				C63BD0DA2C8756A5003D678D /* DetailConfiguretor.swift */,
 				C63BD0D42C87566B003D678D /* DetailModels.swift */,
-				C6AD17512C7A780000E231D4 /* DetailViewController.swift */,
 				C63BD0D62C87567F003D678D /* DetailInteractor.swift */,
 				C63BD0D12C875638003D678D /* DetailPresenter.swift */,
 				C63BD0D82C875694003D678D /* DetailWorker.swift */,
 				C63BD0E82C876738003D678D /* DetailRouter.swift */,
+				C6B3A78E2C88BA830070E128 /* DetailViewController.swift */,
 			);
-			path = "New Group2";
+			path = DetailScene;
 			sourceTree = "<group>";
 		};
 		C6AD17572C7B531E00E231D4 /* New Group */ = {
@@ -276,6 +276,7 @@
 				A8A105B02722F858005E4139 /* NetworkManager.swift in Sources */,
 				C63BD0D72C87567F003D678D /* DetailInteractor.swift in Sources */,
 				C63BD0D92C875694003D678D /* DetailWorker.swift in Sources */,
+				C6B3A78F2C88BA830070E128 /* DetailViewController.swift in Sources */,
 				C63BD0D22C875638003D678D /* DetailPresenter.swift in Sources */,
 				A8A105B427230AEC005E4139 /* CollectionViewCell.swift in Sources */,
 				A8A1059C2722F62C005E4139 /* SceneDelegate.swift in Sources */,
@@ -284,7 +285,6 @@
 				C63BD0E92C876738003D678D /* DetailRouter.swift in Sources */,
 				A8A105B227230A45005E4139 /* SuperHeroesViewController.swift in Sources */,
 				A8A105AE2722F701005E4139 /* Superhero.swift in Sources */,
-				C6AD17522C7A780000E231D4 /* DetailViewController.swift in Sources */,
 				C63BD0E12C87571C003D678D /* SuperHeroesInteractor.swift in Sources */,
 				C63BD0E52C875741003D678D /* SuperHeroesRouter.swift in Sources */,
 				C6AD17562C7B531700E231D4 /* Constants.swift in Sources */,
